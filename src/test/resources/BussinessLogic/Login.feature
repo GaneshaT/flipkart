@@ -1,8 +1,8 @@
 Feature:login functionality
 
 Background: Application open successfully
-Given user open browser with "webdriver.chrome.driver" and "C:\\Local Disk D\\Automation Support\\chromedriver.exe"
-Given user enter url as "https://www.flipkart.com/"
+Given user opens "chrome" browser with exe as
+Given user enter url as 
 
 @SmokeTest 
 Scenario: Login functionality with valid credentials
@@ -13,4 +13,5 @@ When user enter "9545172923" as username
 When user enter "9545172923" as password
 When user click on login button
 Then Application shows login successfully
+
 

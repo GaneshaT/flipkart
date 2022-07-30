@@ -10,22 +10,20 @@ import io.cucumber.java.en.When;
 
 public class Login 
 {
-
-	@Given("user open browser with {string} and {string}")
-	public void user_open_browser_with_and(String string, String string2) 
-	{ Object [] input1=new Object[2];
-    input1[0]=string;
-    input1[1]=string2;
-    SeleniumOperation.browserlaunch(input1);
-	}
-	@Given("user enter url as {string}")
-	public void user_enter_url_as(String string) 
+	@Given("user opens {string} browser with exe as")
+	public void user_opens_browser_with_exe_as(String string) 
 	{
-		Object [] input2= new Object[2];
-        input2[0]=string;
-    SeleniumOperation.OpenApplication(input2);
+		Object [] input1=new Object[1];
+	    input1[0]=string;
+	    SeleniumOperation.browserlaunch(input1);
 	}
 
+	@Given("user enter url as")
+	public void user_enter_url_as()
+	{
+     SeleniumOperation.OpenApplication();
+	}
+	
 	@When("user click on initial login page")
 	public void user_click_on_initial_login_page() 
 	{  Object [] input3= new Object[2];

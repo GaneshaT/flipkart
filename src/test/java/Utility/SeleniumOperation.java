@@ -8,8 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-public class SeleniumOperation {
-	
+import CucumberMap.ConfigReader;
+
+public class SeleniumOperation 
+{
+	public static ConfigReader config;
 	public static ChromeDriver driver = null;
 	
 	public static Hashtable<String,Object> outputParameters= new Hashtable<String,Object>();
@@ -19,16 +22,20 @@ public class SeleniumOperation {
 		try
 		{
 			String BrowserName = (String)InputParameters[0];
-			String BrowserExe = (String)InputParameters[1];
-			System.setProperty(BrowserName , BrowserExe );
+			//String BrowserExe = (String)InputParameters[1];
+			if(BrowserName.equalsIgnoreCase("chrome"))
+			{
+				config=new ConfigReader();
+			System.setProperty("webdriver.chrome.driver",config.getDriverPathChrome());
 			driver = new ChromeDriver();	
 			driver.manage().window().maximize();	
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
+			}
+		
 			outputParameters.put("STATUS", "PASS");
 			outputParameters.put("MESSAGE", "methodUsed:browserLaunch,Input Given: "+InputParameters[0].toString());
 		}
 		
-	
 		catch(Exception e)
 		{
 			outputParameters.put("STATUS", "FAIL");
@@ -37,20 +44,20 @@ public class SeleniumOperation {
 		return outputParameters;
 	}
 	
-	public static Hashtable<String,Object> OpenApplication(Object[] InputParameters)
+	public static Hashtable<String,Object> OpenApplication()
 	{
 		try
 		{
-			String path = (String)InputParameters[0];
-			driver.get(path);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			//String path = (String)InputParameters[0];
+			driver.get(config.getApplicationUrl());
+			driver.manage().timeouts().implicitlyWait(config.getImplicitlyWait(), TimeUnit.SECONDS);
 			outputParameters.put("STATUS", "PASS");
-			outputParameters.put("MESSAGE", "methodUsed:OpenApplication,Input Given: "+InputParameters[0].toString());
+			outputParameters.put("MESSAGE", "methodUsed:OpenApplication,Input Given: "+config.getApplicationUrl().toString());
 		}
 		catch(Exception e)
 		{
 			outputParameters.put("STATUS", "FAIL");
-			outputParameters.put("MESSAGE", "methodUsed:OpenApplication,Input Given: "+InputParameters[0].toString());
+			outputParameters.put("MESSAGE", "methodUsed:OpenApplication,Input Given: "+config.getApplicationUrl().toString());
 			
 		}
 		return outputParameters;
@@ -186,7 +193,7 @@ public class SeleniumOperation {
 		//Open application
 		Object [] input2 = new Object[1];
 		input2[0] = "https://www.flipkart.com/";
-		SeleniumOperation.OpenApplication(input2); 
+		SeleniumOperation.OpenApplication(); 
 		
 		//Close login window
 		Object [] input3 = new Object[1];
