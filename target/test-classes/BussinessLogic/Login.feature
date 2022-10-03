@@ -1,4 +1,4 @@
-Feature:login functionality
+Feature: login functionality
 
 Background: Application open successfully
 Given user opens "chrome" browser with exe as

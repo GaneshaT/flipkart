@@ -17,8 +17,6 @@ public class Tempt
 		ChromeDriver driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(2,TimeUnit.SECONDS);
-		
 		//open Application
 		driver.get("https://www.flipkart.com/");
 		//click on cancle button
@@ -30,20 +28,20 @@ public class Tempt
 		// click on profile 
 		driver.findElement(By.xpath("//*[text()='My Profile']")).click();
 		// Enter uername
-		driver.findElement(By.xpath("//*[@class='_2IX_2- VJZDxU']")).sendKeys("9545172923");
+		driver.findElement(By.xpath("//*[@class='_2IX_2- VJZDxU']")).sendKeys("9156879911");
 		// Enter password
-		driver.findElement(By.xpath("//*[@class='_2IX_2- _3mctLh VJZDxU']")).sendKeys("9545172923");
+		driver.findElement(By.xpath("//*[@class='_2IX_2- _3mctLh VJZDxU']")).sendKeys("7757870706");
 		//click on login
-		driver.findElement(By.xpath("//*[text()='My Profile']")).click();
+		driver.findElement(By.xpath("//*[@class='_2KpZ6l _2HKlqd _3AWRsL']")).click();
 		Thread.sleep(5000);
 		//click on manage Address
 	    driver.findElement(By.xpath("(//*[@class='NS64GK'])[1]")).click();
 	    // Add Address
 	    driver.findElement(By.xpath("//*[@class='_1QhEVk']")).click();
 	    // Enter Name
-	    driver.findElement(By.xpath("(//*[@class='_1w3ZZo _2mFmU7'])[1]")).sendKeys("Ganesh Taware");
+	    driver.findElement(By.xpath("(//*[@class='_1w3ZZo _2mFmU7'])[1]")).sendKeys("Shekhar Dabe");
 	    // enter Mobile no
-	    driver.findElement(By.xpath("(//*[@class='_1w3ZZo _2mFmU7'])[2]")).sendKeys("9545172923");
+	    driver.findElement(By.xpath("(//*[@class='_1w3ZZo _2mFmU7'])[2]")).sendKeys("9156879911");
 	    // Enter Pincode
 	    driver.findElement(By.xpath("(//*[@class='_1w3ZZo _2mFmU7'])[3]")).sendKeys("412207");
 		// Enter Locality
@@ -53,6 +51,6 @@ public class Tempt
 	    // Address Type
 	    driver.findElement(By.xpath("(//*[@class='_1XFPmK'])[1]")).click();
 		// Click on Save
-	    driver.findElement(By.xpath("//*[@class='_2KpZ6l _1JDhFS _1o0c4q _3AWRsL']")).click();
+	   driver.findElement(By.xpath("//*[@class='_2KpZ6l _1JDhFS _1o0c4q _3AWRsL']")).click();
 	}
 }

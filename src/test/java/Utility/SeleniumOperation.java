@@ -1,6 +1,10 @@
 package Utility;
 import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -162,7 +166,6 @@ public class SeleniumOperation
 				System.out.println("test case fail");
 			}
 			
-			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			
 			outputParameters.put("STATUS", "PASS");
@@ -176,10 +179,51 @@ public class SeleniumOperation
 		}
 		return outputParameters;
 	}
+	public static Hashtable<String,Object> SwitchtoTab()
+	{
+		
+		
+		try
+		{
+			Set<String> ids = driver.getWindowHandles();
+			Iterator<String> itr = ids.iterator();
+			String one = itr.next();
+			String two = itr.next();
+			driver.switchTo().window(two);
+			
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			outputParameters.put("STATUS", "PASS");
+			outputParameters.put("MESSAGE", "methodUsed:SwitchtoTab,Input Given: ");
+		}
+		catch(Exception e)
+		{
+			outputParameters.put("STATUS", "FAIL");
+			outputParameters.put("MESSAGE", "methodUsed:SwitchtoTab,Input Given: ");			
+		}
+		return outputParameters;
+	}
 	
-	
-	
-	
+	public static Hashtable<String,Object> SwitchtoDefaultTab()
+	{
+	     try
+		{
+			Set<String> ids = driver.getWindowHandles();
+			Iterator<String> itr = ids.iterator();
+			String one = itr.next();
+			String two = itr.next();
+			driver.switchTo().window(one);
+			
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			outputParameters.put("STATUS", "PASS");
+			outputParameters.put("MESSAGE", "methodUsed:SwitchtoTab,Input Given: ");
+		}
+		catch(Exception e)
+		{
+			outputParameters.put("STATUS", "FAIL");
+			outputParameters.put("MESSAGE", "methodUsed:SwitchtoTab,Input Given: ");			
+		}
+		return outputParameters;
+	}
 	
 	public static void main(String[] args) throws InterruptedException {
 		//SeleniumOperations S = new SeleniumOperations();
@@ -187,7 +231,7 @@ public class SeleniumOperation
 		//Browser launch
 		Object [] input1 = new Object[2];
 		input1[0] = "webdriver.chrome.driver";
-		input1[1] = "D:\\Testing\\Applications\\chromedriver_win32\\chromedriver.exe";
+		input1[1] = "C:\\\\Local Disk D\\\\Automation Support\\\\chromedriver.exe";
 		SeleniumOperation.browserlaunch(input1 ); 
 		
 		//Open application
@@ -209,17 +253,16 @@ public class SeleniumOperation
 		Object [] input5 = new Object[1];
 		input5[0] = "//*[@class='_2kxeIr _1pY_1Z']";
 		SeleniumOperation.ClickOnElement(input5);															
-		
 	
 		//send username password and click on login button
 		Object [] input6 = new Object[2];
 		input6[0] = "(//input[@type='text'])[2]";
-		input6[1] = "akadam719@gmail.com";
+		input6[1] = "9545172923";
 		SeleniumOperation.SendTextOnUi(input6);
 		
 		Object [] input7 = new Object[2];
 		input7[0] = "//*[@type='password']";
-		input7[1] = "7588297532";
+		input7[1] = "9545172923";
 		SeleniumOperation.SendTextOnUi(input7);
 		
 		Object [] input8 = new Object[1];
